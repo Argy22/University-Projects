@@ -1,0 +1,24 @@
+*-----------------------------------------------------------
+* Title      : HW_5
+* Written by : Giannis Argyropoulos
+* Date       : 20/06/2021
+* Description: Askhsh 2
+*-----------------------------------------------------------           
+		      ORG $400400
+ASCII         DC.B $4F,$46,$4E,$49,$0D
+DIGITS        DS.B 4
+
+START         ORG $400420
+              MOVE.B #3,D7
+              LEA DIGITS,A2
+              LEA ASCII,A1
+REVERSE       MOVE.B (A1)+,-(SP)
+              CMPI.B #$0D,(A1)
+              BEQ POP
+              BRA REVERSE
+POP         
+LOOP   
+              MOVE.W (SP)+,(A1)+
+              DBRA D7,POP       
+              
+			  END START

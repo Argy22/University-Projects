@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+   <children>
+      <AnchorPane>
+         <children>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="34.0" prefWidth="102.0" text="Back">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
+                  <TextField fx:id="ElDim1" alignment="CENTER" layoutX="136.0" layoutY="123.0" prefHeight="37.0" prefWidth="526.0" promptText="Define the horizontal position of the center of the ellipse in pixels">
+                     <font>
+                        <Font size="16.0" />
+                     </font></TextField>
+                  <TextField fx:id="ElDim2" alignment="CENTER" layoutX="136.0" layoutY="215.0" prefHeight="37.0" prefWidth="525.0" promptText="Define the vertical position of the center of the ellipse in pixels">
+                     <font>
+                        <Font size="16.0" />
+                     </font></TextField>
+                  <TextField fx:id="ElDim3" alignment="CENTER" layoutX="136.0" layoutY="309.0" prefHeight="37.0" prefWidth="526.0" promptText="Define the width of the ellipse in pixels">
+                     <font>
+                        <Font size="16.0" />
+                     </font></TextField>
+                  <TextField fx:id="ElDim4" alignment="CENTER" layoutX="137.0" layoutY="397.0" prefHeight="37.0" prefWidth="526.0" promptText="Define the height of the ellipse in pixels">
+                     <font>
+                        <Font size="16.0" />
+                     </font></TextField>
+                  <Label layoutX="247.0" layoutY="16.0" prefHeight="30.0" prefWidth="305.0" text="Please define Ellipse's dimensions">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="683.0" layoutY="13.0" mnemonicParsing="false" onAction="#switchToEllipse" prefHeight="34.0" prefWidth="102.0" text="Next">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

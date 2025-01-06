@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SceneController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#switchToHome" prefHeight="34.0" prefWidth="102.0" text="Back">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <TextField fx:id="ArcDim1" alignment="CENTER" layoutX="208.0" layoutY="136.0" prefHeight="37.0" prefWidth="386.0" promptText="Define the X coordinate of the center point">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <TextField fx:id="ArcDim2" alignment="CENTER" layoutX="207.0" layoutY="201.0" prefHeight="37.0" prefWidth="386.0" promptText="Define the Y coordinate of the center point">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <TextField fx:id="ArcDim3" alignment="CENTER" layoutX="207.0" layoutY="267.0" prefHeight="37.0" prefWidth="386.0" promptText="Define the angular extent of the arc in degrees">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <TextField fx:id="ArcDim4" alignment="CENTER" layoutX="206.0" layoutY="335.0" prefHeight="37.0" prefWidth="386.0" promptText="Define the overall width (horizontal radius)">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <TextField fx:id="ArcDim5" alignment="CENTER" layoutX="206.0" layoutY="400.0" prefHeight="37.0" prefWidth="386.0" promptText="Define the overall height (vertical radius)">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <TextField fx:id="ArcDim6" alignment="CENTER" layoutX="207.0" layoutY="464.0" prefHeight="37.0" prefWidth="386.0" promptText="Define the starting angle of the arc in degrees">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <Label layoutX="253.0" layoutY="16.0" prefHeight="34.0" prefWidth="276.0" text="Please define Arc's dimensions">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button layoutX="683.0" layoutY="16.0" mnemonicParsing="false" onAction="#switchToArc" prefHeight="34.0" prefWidth="102.0" text="Next">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

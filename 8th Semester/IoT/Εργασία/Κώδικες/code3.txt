@@ -1,0 +1,111 @@
+#define BLYNK_PRINT Serial
+#define BLYNK_TEMPLATE_ID "TMPL4ejA72qMA"
+#define BLYNK_TEMPLATE_NAME "Traffic Light Controller 2"
+
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+
+char auth[] = "OhCx5HUskMDHEgUCqMhRNVbUsK9LdIBD";
+char ssid[] = "Wokwi-GUEST";
+char pass[] = "";
+
+
+BlynkTimer timer;
+
+
+#define red_led_pin 2
+#define orange_led_pin 4
+#define green_led_pin 5
+
+
+#define blue_button_pin  12
+#define blue_button_vpin V12
+
+
+int led1_state = 0;
+int led2_state = 0;
+int led3_state = 0;
+
+ 
+BLYNK_CONNECTED() {
+  Blynk.syncVirtual(blue_button_vpin);
+}
+ 
+BLYNK_WRITE(blue_button_vpin) {
+  led1_state = param.asInt();
+  digitalWrite(red_led_pin, led1_state);
+  
+  delay(500);
+  led2_state = param.asInt();
+  digitalWrite(orange_led_pin, !led2_state);
+  delay(2500);
+  digitalWrite(orange_led_pin, led2_state);
+  //delay(2500);
+  
+  led3_state = param.asInt();
+  digitalWrite(green_led_pin, !led3_state);
+}
+ 
+ 
+void setup()
+{
+ 
+  Serial.begin(115200);
+  pinMode(blue_button_vpin, INPUT_PULLUP);
+  
+  pinMode(red_led_pin, OUTPUT);
+  pinMode(orange_led_pin, OUTPUT);
+  pinMode(green_led_pin, OUTPUT);
+ 
+
+  digitalWrite(red_led_pin, HIGH);
+  digitalWrite(orange_led_pin, HIGH);
+  digitalWrite(green_led_pin, HIGH);
+  
+
+  Blynk.begin(auth, ssid, pass);
+ 
+}
+ 
+void loop()
+{
+  Blynk.run();
+  timer.run();
+  
+  listen_push_buttons();
+}
+ 
+void listen_push_buttons(){
+
+    if(digitalRead(blue_button_vpin) == LOW){
+      //delay(200);
+      control_led(1);
+      Blynk.virtualWrite(blue_button_pin, led1_state);
+    }
+
+}
+ 
+void control_led(int led){
+ 
+  if(led == 1){
+    led1_state = !led1_state;
+    digitalWrite(red_led_pin, led1_state);
+    Serial.print("led1 State = ");
+    Serial.println(led1_state);
+    delay(50);
+  }
+ 
+  else if(led == 2){
+    led2_state = !led2_state;
+    digitalWrite(orange_led_pin, led2_state);
+    delay(50);
+  }
+  
+  else if(led == 3){
+    led3_state = !led3_state;
+    digitalWrite(green_led_pin, led3_state);
+    delay(50);
+  }
+  
+}

@@ -1,0 +1,37 @@
+*--------------------------------------------------------
+* Title: HW3
+* Written by: Giannis Argyropoulos
+* Date: 05/05/2021
+* Description: Askhsh 2
+*--------------------------------------------------------
+                     ORG   $400400
+NUM1          DC.L  $11443326
+NUM2          DC.L  $87655812
+
+
+                     ORG $400410
+ADDBCD    LEA NUM1+4,A0
+                     LEA NUM2+4,A1
+                     MOVE #$EF,CCR
+                     MOVE.B #03,D0
+LOOP          ABCD -(A0),-(A1)
+                     DBRA D0, LOOP
+                     RTS
+                     END $400410
+
+
+
+              ORG   $400400
+NUM1          DC.L  $11443326
+NUM2          DC.L  $87655812
+
+              ORG $400410
+ADDBCD           LEA NUM1+4,A0
+              LEA NUM2+4,A1
+              MOVE #$EF,CCR
+              MOVE.B #04,D0
+LOOP          ABCD -(A0),-(A1)
+              SUBQ.B #1, D0
+              BNE LOOP
+                           RTS
+              END $400410

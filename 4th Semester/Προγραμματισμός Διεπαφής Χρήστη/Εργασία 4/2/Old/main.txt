@@ -1,0 +1,65 @@
+package application;
+	
+import java.awt.Button;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.stage.Stage;
+import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+//import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
+
+
+public class Main extends Application {
+	
+	private Stage stage;
+	
+	private Scene homeScene;
+	private VBox homeVBox;
+	private Button homeButton;
+	
+	private Scene arcScene;
+	private Button arcButton;
+	private VBox arcVBox;
+	
+	@Override
+	public void start(Stage stage){
+		try {
+			
+			Parent root=FXMLLoader.load(getClass().getResource("HomeScene.fxml"));
+			Scene scene = new Scene(root);
+			String css = this.getClass().getResource("application.css").toExternalForm();
+			scene.getStylesheets().add(css);
+			
+			
+			Image icon = new Image ("icon.png");
+			stage.getIcons().add(icon);
+			stage.setTitle("Shape Chooser");
+			stage.setScene(scene);
+			stage.show();
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+		
+		/*Image icon = new Image ("icon.png");
+		stage.getIcons().add(icon);
+		stage.setTitle("Shape Chooser");
+		stage.setWidth(1000);
+		stage.setHeight(700);
+		stage.setX(450);
+		stage.setY(180);
+		
+		stage.setScene(scene);
+		stage.show();*/
+
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+}

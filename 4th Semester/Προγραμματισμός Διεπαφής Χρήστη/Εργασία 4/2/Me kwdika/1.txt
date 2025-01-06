@@ -1,0 +1,89 @@
+package application;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+		@Override
+		public void start(Stage stage){
+			try {
+				
+				//Orismos eikonidiou.
+				Image icon = new Image(getClass().getResourceAsStream("icon.png"));
+				stage.getIcons().add(icon);
+				
+				//Orismos titlou parathurou kai diastasewn tou.
+				stage.setTitle("Shape Chooser");
+				stage.setWidth(1000);
+				stage.setHeight(700);
+				stage.setX(450);
+				stage.setY(180);
+				
+				//Dhmiourgia koumpiwn.
+				Button arcButton = new Button();
+				Button cubicCurveButton = new Button();
+				Button cylinderButton = new Button();
+				Button ellipseButton = new Button();
+				Button polygonButton = new Button();
+				Button rectangleButton = new Button();
+				Button lineButton = new Button();
+				Button pathButton = new Button();
+				
+				//Orismos onomatwn sta koumpia.
+				arcButton.setText("Arc");
+				cubicCurveButton.setText("Cubic Curve");
+				cylinderButton.setText("Cylinder");
+				ellipseButton.setText("Ellipse");
+				polygonButton.setText("Polygon");
+				rectangleButton.setText("Rectangle");
+				lineButton.setText("Line");
+				pathButton.setText("Path");
+				
+				StackPane layout = new StackPane();
+				
+				//Prosthikh twn koumpiwn sto StackPane mas.
+				layout.getChildren().add(cubicCurveButton);
+				layout.getChildren().add(cylinderButton);
+				layout.getChildren().add(ellipseButton);
+				layout.getChildren().add(polygonButton);
+				layout.getChildren().add(rectangleButton);
+				layout.getChildren().add(lineButton);
+				layout.getChildren().add(pathButton);
+				
+				//Prosthikh Backround.
+				Image icon2 = new Image(getClass().getResourceAsStream("icon.png"));
+				BackgroundImage bImg = new BackgroundImage(icon2,
+                        									BackgroundRepeat.NO_REPEAT,
+                                                			BackgroundRepeat.NO_REPEAT,
+                                                            BackgroundPosition.CENTER,
+                                                            BackgroundSize.DEFAULT);
+		        Background bGround = new Background(bImg);
+		        layout.setBackground(bGround);
+				
+		        //Orismos skhnhs kai probolh auths.
+				Scene scene1 = new Scene(layout);
+				
+				stage.setScene(scene1);
+				stage.show();
+
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+			
+		public static void main(String[] args) {
+			launch(args);
+		}
+
+	}

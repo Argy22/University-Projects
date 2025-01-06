@@ -1,0 +1,22 @@
+int pinButton = 2;
+int ledPin = 9;
+int stateButton = 0;
+void setup()
+{
+pinMode(pinButton, INPUT);
+pinMode(ledPin, OUTPUT);
+}
+
+void loop()
+{
+stateButton = digitalRead(pinButton);
+if (stateButton == 1)
+{ 
+digitalWrite(ledPin , HIGH);
+delay(1000);
+digitalWrite(ledPin , LOW );
+delay(1000); 
+} 
+else //διαφορετικά
+digitalWrite( ledPin, LOW );
+}

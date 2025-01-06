@@ -1,0 +1,28 @@
+int buttonPin = 2;
+int GledPin = 8;
+int RledPin = 9;
+void setup()
+{
+pinMode( buttonPin, INPUT);
+pinMode( GledPin , OUTPUT);
+pinMode( RledPin , OUTPUT);
+}
+
+void loop() {
+if (digitalRead
+(buttonPin))
+{
+digitalWrite( RledPin, LOW );
+digitalWrite( GledPin , HIGH );
+delay( 1000 );
+digitalWrite( GledPin , LOW );
+delay( 1000 );
+}
+else {
+digitalWrite( GledPin , LOW );
+digitalWrite( RledPin , HIGH );
+delay( 1000 );
+digitalWrite( RledPin , LOW );
+delay( 1000 );
+}
+}

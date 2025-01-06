@@ -1,0 +1,38 @@
+*-----------------------------------------------------------
+* Title      : 5254_HW1
+* Written by : Giannis Argyropoulos
+* Date       : 05/04/2021
+* Description: Askhsh 4
+*----------------------------------------------------------
+                ORG   $400400
+       
+                DC.B $00
+                DC.B $19
+                DC.B $35
+                DC.B $47
+                DC.B $5D
+                DC.B $57
+                DC.B $00
+                DC.B $5F
+                DC.B $B0
+                DC.B $BF
+                DC.B $C9
+                DC.B $D1
+                DC.B $EC
+                DC.B $E0
+                DC.B $D2
+                DC.B $C4
+             
+
+               ORG $400410
+START
+               MOVE.B $400401,D0
+               MOVE.W $400400,D1
+               MOVE.L $400408,D2
+               MOVE.B D2,D1
+               MOVEA.L $400400,A0
+               MOVE.B (A0),D3
+               MOVE.L (A0)+,D0
+               MOVE.L #$12345678,D0
+               MOVE.W -(A0),D0
+	          END START

@@ -1,0 +1,16 @@
+const int ledPinPWM=10;
+const int pushButton=2;
+byte pwmValue;
+
+void setup(){
+pinMode(pushButton,INPUT_PULLUP);}
+
+void loop(){
+int stateButton=digitalRead(pushButton);
+if(stateButton==LOW){
+analogWrite(ledPinPWM,pwmValue);
+pwmValue++;
+delay(25);}else{
+analogWrite(ledPinPWM,pwmValue);
+pwmValue--;
+delay(25);}}

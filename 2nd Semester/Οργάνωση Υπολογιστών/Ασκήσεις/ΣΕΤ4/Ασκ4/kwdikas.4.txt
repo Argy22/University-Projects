@@ -1,0 +1,24 @@
+int BPA = 7;
+int BPB = 8;
+int Ledpin = 11;
+int A;
+int B; 
+void Exor();
+void setup(){
+  pinMode(A, INPUT);
+  pinMode(B, INPUT);
+  pinMode(Ledpin, OUTPUT);
+}
+void loop(){
+    Exor();
+}
+void Exor(){
+  A=digitalRead(BPA);
+  B=digitalRead(BPB);
+  if((!A&&B)||(A&&!B))
+  {
+  digitalWrite(Ledpin,HIGH); 
+  }
+  else
+  digitalWrite(Ledpin,LOW);
+}

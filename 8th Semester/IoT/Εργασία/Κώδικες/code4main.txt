@@ -1,0 +1,131 @@
+#define BLYNK_PRINT Serial
+#define BLYNK_TEMPLATE_ID "TMPL4ejA72qMA"
+#define BLYNK_TEMPLATE_NAME "Traffic Light Controller 2"
+
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+
+char auth[] = "OhCx5HUskMDHEgUCqMhRNVbUsK9LdIBD";
+char ssid[] = "Wokwi-GUEST";
+char pass[] = "";
+
+
+BlynkTimer timer;
+
+
+#define red_button_pin 12 //button1_pin
+#define orange_button_pin 14 //button2_pin
+#define green_button_pin 27 //button3_pin
+
+#define red_button_vpin  V12 //button1_vpin
+#define orange_button_vpin  V14 //button2_vpin
+#define green_button_vpin  V27 //button3_vpin
+
+#define red_led_pin 2 //led1_pin
+#define orange_led_pin 4 //led2_pin
+#define green_led_pin 5 //led3_pin
+
+int red_led_state = 0; //led1_state
+int orange_led_state = 0; //led2_state
+int green_led_state = 0; //led3_state
+
+//bool remote_controll=1;
+
+
+BLYNK_CONNECTED() {
+  Blynk.syncVirtual(red_button_vpin);
+  Blynk.syncVirtual(orange_button_vpin);
+  Blynk.syncVirtual(green_button_vpin);
+}
+
+BLYNK_WRITE(red_button_vpin) {
+  red_led_state = !param.asInt();
+  digitalWrite(red_led_pin, red_led_state);
+}
+
+BLYNK_WRITE(orange_button_vpin) {
+  orange_led_state = !param.asInt();
+  digitalWrite(orange_led_pin, orange_led_state);
+}
+
+BLYNK_WRITE(green_button_vpin) {
+  green_led_state = !param.asInt();
+  digitalWrite(green_led_pin, green_led_state);
+}
+
+
+void setup()
+{
+
+  Serial.begin(115200);
+  pinMode(red_button_pin, INPUT_PULLUP);
+  pinMode(orange_button_pin, INPUT_PULLUP);
+  pinMode(green_button_pin, INPUT_PULLUP);
+
+
+  pinMode(red_led_pin, OUTPUT);
+  pinMode(orange_led_pin, OUTPUT);
+  pinMode(green_led_pin, OUTPUT);
+
+
+
+  digitalWrite(red_led_pin, HIGH);
+  digitalWrite(orange_led_pin, HIGH);
+  digitalWrite(green_led_pin, HIGH);
+
+
+  Blynk.begin(auth, ssid, pass);
+
+}
+
+void loop()
+{
+  Blynk.run();
+  timer.run();
+
+  listen_push_buttons();
+}
+
+void listen_push_buttons() {
+  if (digitalRead(red_button_pin) == LOW) {
+    delay(200);
+    control_led(1);
+    Blynk.virtualWrite(red_button_vpin, red_led_state);
+  }
+  else if (digitalRead(orange_button_pin) == LOW) {
+    delay(200);
+    control_led(2);
+    Blynk.virtualWrite(orange_button_vpin, orange_led_state);
+  }
+  else if (digitalRead(green_button_pin) == LOW) {
+    delay(200);
+    control_led(3);
+    Blynk.virtualWrite(green_button_vpin, green_led_state);
+  }
+  //remote_controll==!remote_controll;
+}
+
+void control_led(int led) {
+
+  if (led == 1) {
+    red_led_state = !red_led_state;
+    digitalWrite(red_led_pin, red_led_state);
+    //Serial.print("led1 State = ");
+    //Serial.println(red_led_state);
+    delay(50);
+  }
+
+  else if (led == 2) {
+    orange_led_state = !orange_led_state;
+    digitalWrite(orange_led_pin, orange_led_state);
+    delay(50);
+  }
+
+  else if (led == 3) {
+    green_led_state = !green_led_state;
+    digitalWrite(green_led_pin, green_led_state);
+    delay(50);
+  }
+
+}

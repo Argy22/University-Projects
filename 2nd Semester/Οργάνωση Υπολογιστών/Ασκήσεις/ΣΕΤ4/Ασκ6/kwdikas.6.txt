@@ -1,0 +1,15 @@
+int pinButton = 2;
+int ledPin = 5;
+
+void setup(){
+PORTD = B00000100;
+DDRD = B01000000;
+}
+
+void loop(){
+int stateButton = (PIND & (1 << pinButton)) >> pinButton;
+if (stateButton == LOW) { 
+PORTD = (1 << ledPin) | PORTD;
+} else 
+PORTD = ~(1 << ledPin) & PORTD;
+}

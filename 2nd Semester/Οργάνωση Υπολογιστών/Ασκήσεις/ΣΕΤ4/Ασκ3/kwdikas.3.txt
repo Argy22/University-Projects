@@ -1,0 +1,51 @@
+int BPA = 7;
+int BPB = 8;
+int Ledpin = 11;
+int A;
+int B; 
+void Nand();
+void Or();
+void Nor();
+
+void setup(){
+  pinMode(A, INPUT);
+  pinMode(B, INPUT);
+  pinMode(Ledpin, OUTPUT);
+}
+
+void loop(){
+    Nand();
+    //Or();
+    //Nor();
+}
+
+
+
+
+
+void Nand(){
+  A=digitalRead(BPA);
+  B=digitalRead(BPB);
+  if(!(A&&B)){
+  digitalWrite(Ledpin,HIGH); 
+  }else
+  digitalWrite(Ledpin,LOW);
+}
+
+void Or(){
+  A=digitalRead(BPA);
+  B=digitalRead(BPB);
+  if((A||B)){
+  digitalWrite(Ledpin,HIGH); 
+  }else
+  digitalWrite(Ledpin,LOW);
+}
+
+void Nor(){
+  A=digitalRead(BPA);
+  B=digitalRead(BPB);
+  if(!(A||B)){
+  digitalWrite(Ledpin,HIGH); 
+  }else
+  digitalWrite(Ledpin,LOW);
+}

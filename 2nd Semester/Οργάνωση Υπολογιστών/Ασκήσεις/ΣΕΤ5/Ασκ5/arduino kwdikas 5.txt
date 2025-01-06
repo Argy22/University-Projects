@@ -1,0 +1,33 @@
+const int ledPin = 9; 
+unsigned int RESULT; 
+unsigned int A = 0;
+
+void setup() {
+Serial.begin(9600);
+delay(50);
+pinMode(ledPin, OUTPUT);
+Serial.println("Set monitor to No line ending");
+}
+
+void loop(){
+A = 0;
+Serial.println("Enter num A:"); 
+while (Serial.available() == 0) {}
+while (Serial.available()){ 
+A = Serial.parseInt();
+Serial.print("Number A=");
+Serial.println(A);
+RESULT = A*A*A;
+Serial.print("Result A^3=");
+Serial.println(RESULT); 
+}
+
+if (A >= 256){
+digitalWrite(ledPin, HIGH);
+Serial.println("Overflow!!");
+Serial.println("Invalid number! Try Again.");
+}else{
+digitalWrite(ledPin, LOW);
+}
+Serial.flush();
+}

@@ -1,0 +1,22 @@
+*-----------------------------------------------------------
+* Title      : HW_5
+* Written by : Giannis Argyropoulos
+* Date       : 19/06/2021
+* Description: Askhsh 1
+*-----------------------------------------------------------
+           
+NUM1       DC.L  $2
+NUM2       DC.L  $1
+NUM3       DC.L  $400400
+NUM4       DC.L $400406
+START:
+           ORG    $400400
+           MOVEM.L NUM1,A1
+           MOVEM.L NUM2,A0
+           MOVEM.L NUM3,D2
+           MOVEM.L NUM4,D1
+    
+           MOVEM.L  A1/A0/D2/D1,-(SP)
+           MOVEM.L (SP)+, D4/D7/A3/A4
+        
+           END $400400

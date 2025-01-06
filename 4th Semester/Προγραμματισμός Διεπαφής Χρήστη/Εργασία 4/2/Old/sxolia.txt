@@ -1,0 +1,10 @@
+/*Image icon = new Image ("icon.png");
+		stage.getIcons().add(icon);
+		stage.setTitle("Shape Chooser");
+		stage.setWidth(1000);
+		stage.setHeight(700);
+		stage.setX(450);
+		stage.setY(180);
+		
+		stage.setScene(scene);
+		stage.show();*/
