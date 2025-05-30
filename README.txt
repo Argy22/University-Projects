@@ -18,7 +18,7 @@ Welcome to my respository!
 
 My name is Ioannis Argyropoulos, and I am a Computer Science student at Democritus University of Thrace.
 
-Here, I have uploaded the projects we completed during our studies. Most of them are introductory to each subject and, consequently, of low difficulty and complexity. Nevertheless, I decided to upload them.
+Here, I have uploaded the assignments we completed during our studies. Most of them are introductory to each subject and, consequently, of low difficulty and complexity. Nevertheless, I decided to upload them. Please note that the assignment descriptions and solutions are in Greek.
 
 Also, I've included my LinkedIn profile, in case you'd like to learn more about me and get in touch!
 https://www.linkedin.com/in/ioannis-argyropoulos-argy22/
