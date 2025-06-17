@@ -1,0 +1,79 @@
+#define BLYNK_PRINT Serial
+#define BLYNK_TEMPLATE_ID "TMPL4ejA72qMA"
+#define BLYNK_TEMPLATE_NAME "Traffic Light Controller 2"
+
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+
+
+char auth[] = "OhCx5HUskMDHEgUCqMhRNVbUsK9LdIBD";
+char ssid[] = "Wokwi-GUEST";
+char pass[] = "";
+
+int RedLight = 2;
+int OrangeLight = 4;
+int GreenLight = 5;
+int ButtonPin = 12;
+int ButtonState = 0;
+bool isGreen = false;
+
+
+void setup()
+{
+
+  Serial.begin(115200);
+
+  // initialize the LED pin as an output
+  pinMode(RedLight, OUTPUT);
+  pinMode(OrangeLight, OUTPUT);
+  pinMode(GreenLight, OUTPUT);
+
+  // Button pin with internal pull-up resistor
+  pinMode(ButtonPin, INPUT_PULLUP);
+
+  Blynk.begin(auth, ssid, pass);
+
+}
+
+void loop()
+{
+
+  Blynk.run();
+
+  if (digitalRead(ButtonPin) == LOW)
+  {
+    Serial.println("Button pressed...");
+    isGreen = !isGreen;
+  }
+
+  digitalWrite(GreenLight, isGreen ? HIGH : LOW);
+  digitalWrite(OrangeLight, !isGreen ? HIGH : LOW);
+  delay(1000);
+  digitalWrite(OrangeLight, !isGreen ? HIGH : LOW);
+
+  digitalWrite(RedLight, !isGreen ? HIGH : LOW);
+
+  delay(500);
+
+}
+
+
+BLYNK_WRITE(V12) {
+
+  if (digitalRead(ButtonPin) == LOW)
+  {
+    Serial.println("Button pressed...");
+    isGreen = !isGreen;
+  }
+
+  digitalWrite(GreenLight, isGreen ? HIGH : LOW);
+  digitalWrite(OrangeLight, !isGreen ? HIGH : LOW);
+  delay(1000);
+  digitalWrite(OrangeLight, !isGreen ? HIGH : LOW);
+
+  digitalWrite(RedLight, !isGreen ? HIGH : LOW);
+
+  delay(500);
+
+}
