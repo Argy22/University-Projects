@@ -16,3 +16,5 @@ Welcome to my repository!
 My name is Ioannis Argyropoulos, and I’m a graduate of the Department of Computer Science at the Democritus University of Thrace.
 
 Here, I’ve uploaded the projects we worked on during our time at the university. Most of these are introductory to each subject and, as a result, are relatively simple and not very complex. Nevertheless, I decided to upload them.
+
+Please note that the instructions for the exercises and their solutions are in Greek.
